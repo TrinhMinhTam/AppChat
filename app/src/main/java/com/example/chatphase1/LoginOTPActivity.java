@@ -1,5 +1,6 @@
 package com.example.chatphase1;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,8 +17,11 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.chatphase1.utils.AndroidUtil;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.Firebase;
 import com.google.firebase.FirebaseException;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
@@ -63,6 +67,8 @@ public class LoginOTPActivity extends AppCompatActivity {
         nextBtn.setOnClickListener(v -> {
             String enteredOTP = otpInput.getText().toString();
             PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationCode,enteredOTP);
+            signIn(credential);
+
         });
 
 
@@ -117,6 +123,19 @@ public class LoginOTPActivity extends AppCompatActivity {
     }
 
     void signIn(PhoneAuthCredential phoneAuthCredential){
-
+        setInProgress(true);
+        mAuth.signInWithCredential(phoneAuthCredential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                setInProgress(false);
+                if(task.isSuccessful()){
+                    Intent intent = new Intent(LoginOTPActivity.this,LoginUsernameActivity.class);
+                    intent.putExtra("phone",phoneNumber);
+                    startActivity(intent);
+                }else{
+                    AndroidUtil.showToast(getApplicationContext(),"OTP verification failed");
+                }
+            }
+        });
     }
 }
