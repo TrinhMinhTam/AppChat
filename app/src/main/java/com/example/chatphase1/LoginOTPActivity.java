@@ -60,6 +60,10 @@ public class LoginOTPActivity extends AppCompatActivity {
 //        Map<String,String> data = new HashMap<>();
 //        FirebaseFirestore.getInstance().collection("test").add(data);
         sendOtp(phoneNumber,false);
+        nextBtn.setOnClickListener(v -> {
+            String enteredOTP = otpInput.getText().toString();
+            PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationCode,enteredOTP);
+        });
 
 
 
