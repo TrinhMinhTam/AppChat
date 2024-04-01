@@ -30,6 +30,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
 public class LoginOTPActivity extends AppCompatActivity {
@@ -70,12 +72,15 @@ public class LoginOTPActivity extends AppCompatActivity {
             signIn(credential);
 
         });
-
+        resendOtpTextView.setOnClickListener(v -> {
+            sendOtp(phoneNumber,true);
+        });
 
 
     }
 
     void sendOtp(String phoneNumber,boolean isResend){
+        startResendTimer();
         setInProgress(true);
         PhoneAuthOptions.Builder builder =
                 PhoneAuthOptions.newBuilder(mAuth)
@@ -137,5 +142,24 @@ public class LoginOTPActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    void startResendTimer(){
+        resendOtpTextView.setEnabled(false);
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                timeoutSeconds--;
+                resendOtpTextView.setText("Resend OTP in "+timeoutSeconds+" seconds");
+                if (timeoutSeconds<=0){
+                    timeoutSeconds = 60L;
+                    timer.cancel();
+                    runOnUiThread(()->{
+                        resendOtpTextView.setEnabled(true);
+                    });
+                }
+            }
+        },0,1000);
     }
 }
