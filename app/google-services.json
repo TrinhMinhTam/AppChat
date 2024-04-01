@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1070823297080",
+    "project_id": "chatphase1-backend",
+    "storage_bucket": "chatphase1-backend.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1070823297080:android:b5776643705ed92bbbd6cd",
+        "android_client_info": {
+          "package_name": "com.example.chatphase1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCn8_ME01EvJDmDHsPFRfiVQl-QEbd4suM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
