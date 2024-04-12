@@ -37,7 +37,9 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         searchButton = findViewById(R.id.main_search_btn);
-        searchButton.setOnClickListener(v -> {
+        searchButton.setOnClickListener(
+
+                v -> {
             startActivity(new Intent(MainActivity.this,SearchUserActivity.class));
         });
 
