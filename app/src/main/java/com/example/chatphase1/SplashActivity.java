@@ -32,7 +32,7 @@ public class SplashActivity extends AppCompatActivity {
                     startActivity(new Intent(SplashActivity.this,MainActivity.class));
                 }
                 else {
-                    startActivity(new Intent(SplashActivity.this,LoginPhoneNumberActivity.class));
+                    startActivity(new Intent(SplashActivity.this,RegisterPhoneNumberActivity.class));
                 }
                 finish();
             }
