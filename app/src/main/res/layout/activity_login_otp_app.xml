@@ -9,7 +9,7 @@
     android:gravity="center"
     android:layout_margin="20dp"
     android:weightSum="100"
-    tools:context=".RegisterPhoneNumberActivity">
+    tools:context=".RegisterOtpActivity">
 
 
     <LinearLayout
@@ -24,7 +24,7 @@
             android:layout_height="32dp"
             android:layout_margin="10dp"
             android:background="@drawable/circular_bg"
-            android:backgroundTint="@color/my_primary">
+            android:backgroundTint="@color/light_gray">
 
 
             <TextView
@@ -40,7 +40,7 @@
             android:layout_height="32dp"
             android:layout_margin="10dp"
             android:background="@drawable/circular_bg"
-            android:backgroundTint="@color/light_gray">
+            android:backgroundTint="@color/my_primary">
 
 
             <TextView
@@ -51,35 +51,20 @@
                 android:textSize="18sp"
                 android:text="2"/>
         </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_margin="10dp"
-            android:background="@drawable/circular_bg"
-            android:backgroundTint="@color/light_gray">
 
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:text="3"/>
-        </RelativeLayout>
     </LinearLayout>
 
     <ImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:src="@drawable/phone_icon"
+        android:src="@drawable/otp_icon"
         app:tint="@color/my_primary"
         android:layout_weight="20"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Enter mobile number"
+        android:text="Enter Otp sent to your phone number"
         android:layout_gravity="center_vertical"
         android:letterSpacing="0.08"
         android:textStyle="bold"
@@ -93,38 +78,34 @@
         android:gravity="center"
         android:layout_weight="5">
 
-        <com.hbb20.CountryCodePicker
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:ccp_showFlag="false"
-            app:ccp_showNameCode="false"
-            android:id="@+id/login_countrycode"/>
+
 
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:hint="Mobile"
-            android:inputType="phone"
+            android:hint="OTP"
+            android:inputType="number"
+            android:maxLength="6"
             android:layout_margin="10dp"
             android:background="@drawable/edit_text_rounded_corner"
             android:elevation="5dp"
-            android:id="@+id/login_mobile_number"/>
+            android:id="@+id/login_otp"/>
     </LinearLayout>
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:gravity="center_vertical"
         android:orientation="vertical"
-        android:layout_weight="20">
+        android:layout_weight="10">
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/btn_rounded_corner"
-            android:text="Send otp"
-            android:id="@+id/send_otp_btn"/>
+            android:text="Confirm"
+            android:id="@+id/login_app_next_btn"/>
         <ProgressBar
             android:layout_width="32dp"
             android:layout_height="wrap_content"
@@ -132,5 +113,13 @@
             android:layout_gravity="center"
             android:id="@+id/login_progress_bar"/>
     </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="10"
+        android:gravity="center"
+        android:text="Resend OTP in 60 sec"
+        android:id="@+id/resend_otp_textview"/>
 </LinearLayout>
 
