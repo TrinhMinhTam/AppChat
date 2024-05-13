@@ -13,6 +13,6 @@
         android:backgroundTint="@color/off_white"
         android:layout_centerInParent="true"
         android:id="@+id/profile_pic_image_view"
-        app:tint="@color/light_gray" />
+        />
 
 </RelativeLayout>
